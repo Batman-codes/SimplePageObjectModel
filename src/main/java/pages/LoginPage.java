@@ -1,11 +1,13 @@
 package pages;
 
+import base.BasePage;
 import base.PageObjectPool;
+import io.cucumber.core.internal.com.fasterxml.jackson.databind.ser.Serializers;
 import org.openqa.selenium.By;
 
 import base.ProjectSpecificMethod;
 
-public class LoginPage extends ProjectSpecificMethod {
+public class LoginPage extends ProjectSpecificMethod implements BasePage {
 
 	public LoginPage enterUsername(String uname) {
 		// Use getDriver() to access the WebDriver instance
@@ -20,10 +22,8 @@ public class LoginPage extends ProjectSpecificMethod {
 
 	public WelcomePage clickLogin() {
 		getDriver().findElement(By.className("decorativeSubmit")).click();
-
 		//Getting the object for WelComePage class from pageObjectPool
 		return PageObjectPool.getPage("WelcomePage", WelcomePage.class);
-
 		//return new WelcomePage();
 	}
 }

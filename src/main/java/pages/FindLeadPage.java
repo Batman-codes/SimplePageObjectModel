@@ -1,11 +1,13 @@
 package pages;
 
+import base.BasePage;
+import base.PageObjectPool;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import base.ProjectSpecificMethod;
 
-public class FindLeadPage extends ProjectSpecificMethod {
+public class FindLeadPage extends ProjectSpecificMethod implements BasePage {
 
 	public FindLeadPage clickPhoneTab() {
 		getDriver().findElement(By.xpath("//span[text()='Phone']")).click();
@@ -51,23 +53,24 @@ public class FindLeadPage extends ProjectSpecificMethod {
 
 		leadID = getDriver().findElement(By.xpath("//div[@class='x-grid3-cell-inner x-grid3-col-partyId']/a"))
 				.getText();
-
-		return new ViewLeadPage();
+		return PageObjectPool.getPage("ViewLeadPage", ViewLeadPage.class);
+		//return new ViewLeadPage();
 	}
 
 	
 	public LeadsPage clickDeleteFirstLead() throws InterruptedException {
 		Thread.sleep(1000);
 		getDriver().findElement(By.xpath("//div[@class='x-grid3-cell-inner x-grid3-col-partyId']/a")).click();
-		return new LeadsPage();
+		return PageObjectPool.getPage("LeadsPage", LeadsPage.class);
+		//return new LeadsPage();
 	}
 
 	public ViewLeadPage clickFirstLead() throws InterruptedException {
 		Thread.sleep(500);
 
 		getDriver().findElement(By.xpath("//div[@class='x-grid3-cell-inner x-grid3-col-partyId']/a")).click();
-
-		return new ViewLeadPage();
+		return PageObjectPool.getPage("ViewLeadPage", ViewLeadPage.class);
+		//return new ViewLeadPage();
 	}
 
 	public String getFirstLead() throws InterruptedException {

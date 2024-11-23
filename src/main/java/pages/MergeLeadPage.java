@@ -5,13 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import base.BasePage;
+import base.PageObjectPool;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import base.ProjectSpecificMethod;
 
-public class MergeLeadPage extends ProjectSpecificMethod {
+public class MergeLeadPage extends ProjectSpecificMethod implements BasePage {
 
 	public MergeLeadPage clickFromLead() throws InterruptedException {
 		getDriver().findElement(By.xpath("//img[@alt='Lookup']")).click();
@@ -85,7 +87,8 @@ public MergeLeadPage clickToFindleadsButton() throws InterruptedException {
 		getDriver().findElement(By.xpath("//a[text()='Merge']")).click();
 
 		getDriver().switchTo().alert().accept();
-		return new LeadsPage();
+		return PageObjectPool.getPage("LeadsPage", LeadsPage.class);
+		//return new LeadsPage();
 	}
 
 }

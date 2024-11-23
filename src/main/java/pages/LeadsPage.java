@@ -1,10 +1,11 @@
 package pages;
 
+import base.BasePage;
 import org.openqa.selenium.By;
 
 import base.ProjectSpecificMethod;
 
-public class LeadsPage extends ProjectSpecificMethod {
+public class LeadsPage extends ProjectSpecificMethod implements BasePage {
 
 	public CreateLeadPage clickCreateLeadLink() {
 		getDriver().findElement(By.linkText("Create Lead")).click();

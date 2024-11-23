@@ -1,11 +1,12 @@
 package pages;
 
+import base.BasePage;
 import base.PageObjectPool;
 import org.openqa.selenium.By;
 
 import base.ProjectSpecificMethod;
 
-public class CreateLeadPage extends ProjectSpecificMethod {
+public class CreateLeadPage extends ProjectSpecificMethod implements BasePage {
 
 	public CreateLeadPage enterCompanyName(String cName) {
 		getDriver().findElement(By.id("createLeadForm_companyName")).sendKeys(cName);

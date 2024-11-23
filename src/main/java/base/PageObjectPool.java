@@ -1,5 +1,7 @@
 package base;
 
+import io.cucumber.core.internal.com.fasterxml.jackson.databind.ser.Serializers;
+
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.logging.Level;
@@ -11,7 +13,7 @@ public class PageObjectPool {
 
     private static final ConcurrentMap<String, Object> pageObjectMap = new ConcurrentHashMap<>();
 
-    public static <T> T getPage(String pageName, Class<T> pageClass){
+    public static <T extends BasePage> T getPage(String pageName, Class<T> pageClass){
         Object object;
         if(!pageObjectMap.containsKey(pageName)){
             try {

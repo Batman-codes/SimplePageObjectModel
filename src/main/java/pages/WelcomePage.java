@@ -1,11 +1,12 @@
 package pages;
 
+import base.BasePage;
 import base.PageObjectPool;
 import org.openqa.selenium.By;
 
 import base.ProjectSpecificMethod;
 
-public class WelcomePage extends ProjectSpecificMethod {
+public class WelcomePage extends ProjectSpecificMethod implements BasePage {
 
 	public WelcomePage verifyTitle() {
 		System.out.println(getDriver().getTitle());

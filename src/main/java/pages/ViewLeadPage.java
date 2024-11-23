@@ -1,10 +1,12 @@
 package pages;
 
+import base.BasePage;
+import base.PageObjectPool;
 import org.openqa.selenium.By;
 
 import base.ProjectSpecificMethod;
 
-public class ViewLeadPage extends ProjectSpecificMethod {
+public class ViewLeadPage extends ProjectSpecificMethod implements BasePage {
 
 	public ViewLeadPage verifyLead() {
 		String firstName = getDriver().findElement(By.id("viewLead_firstName_sp")).getText();
@@ -34,21 +36,22 @@ public class ViewLeadPage extends ProjectSpecificMethod {
 
 	public EditLeadPage clickEditButton() {
 		getDriver().findElement(By.linkText("Edit")).click();
-
-		return new EditLeadPage();
+		return PageObjectPool.getPage("EditLeadPage", EditLeadPage.class);
+		//return new EditLeadPage();
 	}
 
 	public DuplicatePage clickDuplicateButton() {
 
 		getDriver().findElement(By.linkText("Duplicate Lead")).click();
-
-		return new DuplicatePage();
+		return PageObjectPool.getPage("DuplicatePage", DuplicatePage.class);
+		//return new DuplicatePage();
 	}
 
 	public LeadsPage clickDeleteButton() {
 
 		getDriver().findElement(By.linkText("Delete")).click();
-		return new LeadsPage();
+		return PageObjectPool.getPage("LeadsPage", LeadsPage.class);
+		//return new LeadsPage();
 	}
 
 }

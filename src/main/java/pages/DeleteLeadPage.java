@@ -1,10 +1,12 @@
 package pages;
 
+import base.BasePage;
+import base.PageObjectPool;
 import org.openqa.selenium.By;
 
 import base.ProjectSpecificMethod;
 
-public class DeleteLeadPage extends ProjectSpecificMethod {
+public class DeleteLeadPage extends ProjectSpecificMethod implements BasePage {
 
 	public DeleteLeadPage clickPhoneTab() {
 		getDriver().findElement(By.xpath("//span[text()='Phone']")).click();
@@ -28,8 +30,8 @@ public class DeleteLeadPage extends ProjectSpecificMethod {
 	public ViewLeadPage clickFirstResultID() {
 
 		getDriver().findElement(By.xpath("//div[@class='x-grid3-cell-inner x-grid3-col-partyId']/a")).click();
-		
-		return new ViewLeadPage();
+		return PageObjectPool.getPage("ViewLeadPage", ViewLeadPage.class);
+		//return new ViewLeadPage();
 	}
 	
 }
